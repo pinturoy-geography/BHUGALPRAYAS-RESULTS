@@ -11,6 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
+
 :root {
   --navy: #10294c;
   --navy-dark: #091d38;
@@ -343,6 +344,139 @@ footer p {
   z-index: 2;
 }
 
+/* WEBSITE VISIT POPUP */
+
+.visit-popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  background: rgba(3, 12, 28, 0.78);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.visit-popup {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.3);
+  animation: popupShow 0.45s ease;
+  position: relative;
+  text-align: center;
+}
+
+@keyframes popupShow {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.visit-popup-header {
+  background: linear-gradient(135deg, #10294c, #174b83);
+  padding: 30px 20px;
+  color: white;
+}
+
+.visit-popup-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.visit-popup-header h2 span {
+  color: #d5a63c;
+}
+
+.visit-popup-header p {
+  color: #dbeafe;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.visit-popup-content {
+  padding: 28px 24px;
+}
+
+.visit-popup-content p {
+  color: #475569;
+  font-size: 15px;
+  line-height: 1.8;
+  margin-bottom: 22px;
+}
+
+.visit-popup-btn {
+  display: block;
+  width: 100%;
+  background: #10294c;
+  color: white;
+  text-decoration: none;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.visit-popup-btn:hover {
+  background: #d5a63c;
+  color: #10294c;
+}
+
+.visit-popup-close {
+  margin-top: 15px;
+  background: transparent;
+  border: none;
+  color: #64748b;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 8px 15px;
+}
+
+.visit-popup-close:hover {
+  color: #10294c;
+}
+
+/* WORKING POPUP CROSS BUTTON */
+
+.visit-popup-cross {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 50%;
+  color: white;
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+.visit-popup-cross:hover {
+  background: #d5a63c;
+  color: #10294c;
+  transform: rotate(90deg);
+}
+
 /* MOBILE RESPONSIVE */
 
 @media (max-width: 768px) {
@@ -406,7 +540,20 @@ footer p {
   .motivation h2 {
     font-size: 24px;
   }
+
+  .visit-popup-header {
+    padding: 25px 18px;
+  }
+
+  .visit-popup-content {
+    padding: 24px 20px;
+  }
+
+  .visit-popup-header h2 {
+    font-size: 23px;
+  }
 }
+
 </style>
 </head>
 
@@ -431,7 +578,7 @@ footer p {
 <section class="hero">
 
   <span class="hero-label">
-    BHUGAL PRAYAS • BY PINTU SIR
+    BHUGAL PRAYAS • BY PINTU ROY
   </span>
 
   <h1>
@@ -630,7 +777,73 @@ footer p {
 
 </div>
 
+<!-- WEBSITE VISIT POPUP -->
+
+<div
+  class="visit-popup-overlay"
+  id="visitPopup"
+  onclick="closeVisitPopupOutside(event)"
+>
+
+  <div class="visit-popup">
+
+    <!-- WORKING CROSS BUTTON -->
+
+    <button
+      type="button"
+      class="visit-popup-cross"
+      onclick="closeVisitPopup()"
+      aria-label="Close popup"
+    >
+      &times;
+    </button>
+
+    <div class="visit-popup-header">
+
+      <h2>
+        BHUGAL <span>PRAYAS</span>
+      </h2>
+
+      <p>
+        LEARN • EXPLORE • ACHIEVE
+      </p>
+
+    </div>
+
+    <div class="visit-popup-content">
+
+      <p>
+        Visit our website to register for another mock test
+        and follow us for the latest updates, results and
+        educational announcements.
+      </p>
+
+      <a
+        href="https://pinturoy-geography.github.io/BHUGAL-PRAYAS/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="visit-popup-btn"
+      >
+        Visit Our Website
+      </a>
+
+      <button
+        type="button"
+        class="visit-popup-close"
+        onclick="closeVisitPopup()"
+      >
+        Maybe Later
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
 <script>
+
+/* IMAGE LIGHTBOX */
 
 function openLightbox(image) {
 
@@ -668,12 +881,60 @@ document.getElementById("lightbox-image").addEventListener("click", function(eve
   event.stopPropagation();
 });
 
-/* ESC KEY TO CLOSE IMAGE */
+
+/* WEBSITE VISIT POPUP */
+
+/* SHOW POPUP 1 SECOND AFTER WEBSITE LOAD */
+
+window.addEventListener("load", function() {
+
+  setTimeout(function() {
+
+    const popup = document.getElementById("visitPopup");
+
+    if (popup) {
+      popup.style.display = "flex";
+    }
+
+  }, 1000);
+
+});
+
+
+/* CLOSE WEBSITE POPUP */
+
+function closeVisitPopup() {
+
+  const popup = document.getElementById("visitPopup");
+
+  if (popup) {
+    popup.style.display = "none";
+  }
+
+}
+
+
+/* CLOSE POPUP WHEN CLICKING OUTSIDE */
+
+function closeVisitPopupOutside(event) {
+
+  if (event.target.id === "visitPopup") {
+    closeVisitPopup();
+  }
+
+}
+
+
+/* ESC KEY TO CLOSE LIGHTBOX AND POPUP */
 
 document.addEventListener("keydown", function(event) {
 
   if (event.key === "Escape") {
+
     closeLightbox();
+
+    closeVisitPopup();
+
   }
 
 });
