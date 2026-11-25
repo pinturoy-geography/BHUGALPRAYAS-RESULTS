@@ -11,7 +11,6 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
-
 :root {
   --navy: #10294c;
   --navy-dark: #091d38;
@@ -27,12 +26,15 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'DM Sans', sans-serif;
   background: #f4f8fd;
   color: var(--text);
 }
-
 
 /* NAVBAR */
 
@@ -72,12 +74,10 @@ body {
   border-color: var(--gold);
 }
 
-
 /* HERO */
 
 .hero {
-  background:
-    linear-gradient(135deg, #10294c, #174b83);
+  background: linear-gradient(135deg, #10294c, #174b83);
   padding: 75px 20px;
   text-align: center;
   color: white;
@@ -113,7 +113,6 @@ body {
   font-size: 16px;
 }
 
-
 /* RESULTS SECTION */
 
 .results-section {
@@ -141,7 +140,6 @@ body {
   font-size: 15px;
 }
 
-
 /* RESULT CARDS */
 
 .results-grid {
@@ -165,7 +163,6 @@ body {
   transform: translateY(-7px);
   box-shadow: 0 20px 45px rgba(16,41,76,0.15);
 }
-
 
 /* CARD HEADER */
 
@@ -200,7 +197,6 @@ body {
   font-size: 14px;
 }
 
-
 /* RESULT IMAGE */
 
 .result-image {
@@ -222,6 +218,17 @@ body {
   opacity: 0.94;
 }
 
+/* IMAGE ERROR */
+
+.image-error {
+  display: none;
+  padding: 18px;
+  text-align: center;
+  color: #b91c1c;
+  background: #fef2f2;
+  border-radius: 10px;
+  font-size: 13px;
+}
 
 /* CARD FOOTER */
 
@@ -257,7 +264,6 @@ body {
   color: var(--navy);
 }
 
-
 /* MOTIVATION */
 
 .motivation {
@@ -282,7 +288,6 @@ body {
   line-height: 1.7;
 }
 
-
 /* FOOTER */
 
 footer {
@@ -306,7 +311,6 @@ footer p {
   font-size: 13px;
   margin-top: 8px;
 }
-
 
 /* IMAGE LIGHTBOX */
 
@@ -336,8 +340,8 @@ footer p {
   font-size: 42px;
   cursor: pointer;
   line-height: 1;
+  z-index: 2;
 }
-
 
 /* MOBILE RESPONSIVE */
 
@@ -402,15 +406,11 @@ footer p {
   .motivation h2 {
     font-size: 24px;
   }
-
 }
-
 </style>
 </head>
 
-
 <body>
-
 
 <!-- NAVBAR -->
 
@@ -425,7 +425,6 @@ footer p {
   </a>
 
 </nav>
-
 
 <!-- HERO SECTION -->
 
@@ -446,7 +445,6 @@ footer p {
 
 </section>
 
-
 <!-- RESULTS -->
 
 <section class="results-section" id="results">
@@ -463,9 +461,7 @@ footer p {
 
   </div>
 
-
   <div class="results-grid">
-
 
     <!-- CLASS X -->
 
@@ -487,17 +483,21 @@ footer p {
 
       </div>
 
-
       <div class="result-image">
 
         <img
-          src="class-x-result.jpeg"
+          src="/BHUGALPRAYAS-RESULTS/classx.jpeg"
           alt="Class X First Mock Test Result"
           onclick="openLightbox(this)"
+          onerror="showImageError(this)"
         >
 
-      </div>
+        <div class="image-error">
+          Class X result image not found.
+          Please upload classx.jpeg to the repository.
+        </div>
 
+      </div>
 
       <div class="card-footer">
 
@@ -506,7 +506,7 @@ footer p {
         </span>
 
         <a
-          href="class-x-result.jpeg"
+          href="/BHUGALPRAYAS-RESULTS/classx.jpeg"
           download="BHUGAL-PRAYAS-Class-X-Result.jpeg"
           class="download-btn"
         >
@@ -516,8 +516,6 @@ footer p {
       </div>
 
     </div>
-
-
 
     <!-- CLASS IX -->
 
@@ -539,17 +537,21 @@ footer p {
 
       </div>
 
-
       <div class="result-image">
 
         <img
-          src="class-ix-result.jpeg"
+          src="/BHUGALPRAYAS-RESULTS/classix.jpeg"
           alt="Class IX Mock Test Result"
           onclick="openLightbox(this)"
+          onerror="showImageError(this)"
         >
 
-      </div>
+        <div class="image-error">
+          Class IX result image not found.
+          Please upload classix.jpeg to the repository.
+        </div>
 
+      </div>
 
       <div class="card-footer">
 
@@ -558,7 +560,7 @@ footer p {
         </span>
 
         <a
-          href="class-ix-result.jpeg"
+          href="/BHUGALPRAYAS-RESULTS/classix.jpeg"
           download="BHUGAL-PRAYAS-Class-IX-Result.jpeg"
           class="download-btn"
         >
@@ -569,11 +571,9 @@ footer p {
 
     </div>
 
-
   </div>
 
 </section>
-
 
 <!-- MOTIVATION -->
 
@@ -589,7 +589,6 @@ footer p {
   </p>
 
 </section>
-
 
 <!-- FOOTER -->
 
@@ -609,7 +608,6 @@ footer p {
 
 </footer>
 
-
 <!-- IMAGE LIGHTBOX -->
 
 <div
@@ -618,7 +616,10 @@ footer p {
   onclick="closeLightbox()"
 >
 
-  <span class="close-lightbox">
+  <span
+    class="close-lightbox"
+    onclick="closeLightbox()"
+  >
     &times;
   </span>
 
@@ -629,35 +630,43 @@ footer p {
 
 </div>
 
-
 <script>
 
 function openLightbox(image) {
 
-  const lightbox =
-    document.getElementById("lightbox");
-
-  const lightboxImage =
-    document.getElementById("lightbox-image");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = document.getElementById("lightbox-image");
 
   lightboxImage.src = image.src;
 
   lightbox.style.display = "flex";
 
   document.body.style.overflow = "hidden";
-
 }
-
 
 function closeLightbox() {
 
-  document.getElementById("lightbox")
-    .style.display = "none";
+  document.getElementById("lightbox").style.display = "none";
 
   document.body.style.overflow = "auto";
-
 }
 
+function showImageError(image) {
+
+  image.style.display = "none";
+
+  const errorMessage = image.nextElementSibling;
+
+  if (errorMessage) {
+    errorMessage.style.display = "block";
+  }
+}
+
+/* PREVENT IMAGE CLICK FROM CLOSING LIGHTBOX */
+
+document.getElementById("lightbox-image").addEventListener("click", function(event) {
+  event.stopPropagation();
+});
 
 /* ESC KEY TO CLOSE IMAGE */
 
@@ -670,7 +679,6 @@ document.addEventListener("keydown", function(event) {
 });
 
 </script>
-
 
 </body>
 </html>
