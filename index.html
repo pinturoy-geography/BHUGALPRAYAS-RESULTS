@@ -1,3 +1,676 @@
-<DOCTYPE html>
-<h1>NOT PUBLISHED</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10294c">
+
+<title>BHUGAL PRAYAS | Mock Test Results</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root {
+  --navy: #10294c;
+  --navy-dark: #091d38;
+  --gold: #d5a63c;
+  --light-blue: #eaf4ff;
+  --white: #ffffff;
+  --text: #334155;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #f4f8fd;
+  color: var(--text);
+}
+
+
+/* NAVBAR */
+
+.navbar {
+  background: var(--navy);
+  padding: 18px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+}
+
+.logo {
+  color: white;
+  font-size: 23px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 18px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 30px;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  background: var(--gold);
+  color: var(--navy);
+  border-color: var(--gold);
+}
+
+
+/* HERO */
+
+.hero {
+  background:
+    linear-gradient(135deg, #10294c, #174b83);
+  padding: 75px 20px;
+  text-align: center;
+  color: white;
+}
+
+.hero-label {
+  display: inline-block;
+  background: rgba(213,166,60,0.15);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  font-weight: 800;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 46px;
+  margin: 22px 0 15px;
+}
+
+.hero h1 span {
+  color: var(--gold);
+}
+
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  color: #dbeafe;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+
+/* RESULTS SECTION */
+
+.results-section {
+  padding: 70px 6%;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.section-heading h2 {
+  color: var(--navy);
+  font-size: 34px;
+  font-weight: 800;
+}
+
+.section-heading h2 span {
+  color: var(--gold);
+}
+
+.section-heading p {
+  margin-top: 12px;
+  color: #64748b;
+  font-size: 15px;
+}
+
+
+/* RESULT CARDS */
+
+.results-grid {
+  max-width: 1150px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+.result-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #dbe7f5;
+  box-shadow: 0 12px 35px rgba(16,41,76,0.09);
+  transition: transform 0.35s, box-shadow 0.35s;
+}
+
+.result-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 45px rgba(16,41,76,0.15);
+}
+
+
+/* CARD HEADER */
+
+.card-header {
+  background: var(--navy);
+  padding: 28px 20px;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.class-badge {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--navy);
+  padding: 7px 18px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.card-header h3 {
+  font-size: 25px;
+  margin-top: 15px;
+  font-weight: 800;
+}
+
+.card-header p {
+  color: #dbeafe;
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+
+/* RESULT IMAGE */
+
+.result-image {
+  padding: 18px;
+  background: #f8fbff;
+}
+
+.result-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  cursor: zoom-in;
+  transition: 0.3s;
+}
+
+.result-image img:hover {
+  opacity: 0.94;
+}
+
+
+/* CARD FOOTER */
+
+.card-footer {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.card-footer span {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.download-btn {
+  display: inline-block;
+  background: var(--navy);
+  color: white;
+  text-decoration: none;
+  padding: 11px 18px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+
+/* MOTIVATION */
+
+.motivation {
+  max-width: 1100px;
+  margin: 0 auto 70px;
+  padding: 35px 20px;
+  background: var(--navy);
+  border-radius: 18px;
+  text-align: center;
+  color: white;
+}
+
+.motivation h2 {
+  color: var(--gold);
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.motivation p {
+  color: #dbeafe;
+  line-height: 1.7;
+}
+
+
+/* FOOTER */
+
+footer {
+  background: var(--navy-dark);
+  color: #cbd5e1;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+footer h3 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+footer h3 span {
+  color: var(--gold);
+}
+
+footer p {
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+
+/* IMAGE LIGHTBOX */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(3, 12, 28, 0.96);
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.lightbox img {
+  max-width: 95%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 18px;
+  right: 28px;
+  color: white;
+  font-size: 42px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 768px) {
+
+  .navbar {
+    padding: 16px 5%;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .nav-link {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .hero {
+    padding: 55px 20px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .results-section {
+    padding: 50px 5%;
+  }
+
+  .section-heading h2 {
+    font-size: 27px;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .card-header h3 {
+    font-size: 22px;
+  }
+
+  .card-footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .download-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .motivation {
+    margin: 0 5% 50px;
+  }
+
+  .motivation h2 {
+    font-size: 24px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+  <a href="#" class="logo">
+    BHUGAL <span>PRAYAS</span>
+  </a>
+
+  <a href="#results" class="nav-link">
+    View Results
+  </a>
+
+</nav>
+
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+  <span class="hero-label">
+    BHUGAL PRAYAS • BY PINTU SIR
+  </span>
+
+  <h1>
+    Mock Test <span>Results</span>
+  </h1>
+
+  <p>
+    Celebrating the dedication, hard work and achievements
+    of our Geography students. Keep learning and keep growing.
+  </p>
+
+</section>
+
+
+<!-- RESULTS -->
+
+<section class="results-section" id="results">
+
+  <div class="section-heading">
+
+    <h2>
+      Our Students' <span>Achievements</span>
+    </h2>
+
+    <p>
+      Official Geography Mock Test Result
+    </p>
+
+  </div>
+
+
+  <div class="results-grid">
+
+
+    <!-- CLASS X -->
+
+    <div class="result-card">
+
+      <div class="card-header">
+
+        <span class="class-badge">
+          CLASS X
+        </span>
+
+        <h3>
+          1st Mock Test Result
+        </h3>
+
+        <p>
+          Eligible Top 31 Students
+        </p>
+
+      </div>
+
+
+      <div class="result-image">
+
+        <img
+          src="class-x-result.jpeg"
+          alt="Class X First Mock Test Result"
+          onclick="openLightbox(this)"
+        >
+
+      </div>
+
+
+      <div class="card-footer">
+
+        <span>
+          Geography Mock Test
+        </span>
+
+        <a
+          href="class-x-result.jpeg"
+          download="BHUGAL-PRAYAS-Class-X-Result.jpeg"
+          class="download-btn"
+        >
+          Download Result
+        </a>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- CLASS IX -->
+
+    <div class="result-card">
+
+      <div class="card-header">
+
+        <span class="class-badge">
+          CLASS IX
+        </span>
+
+        <h3>
+          Mock Test Result
+        </h3>
+
+        <p>
+          Top 17 Students
+        </p>
+
+      </div>
+
+
+      <div class="result-image">
+
+        <img
+          src="class-ix-result.jpeg"
+          alt="Class IX Mock Test Result"
+          onclick="openLightbox(this)"
+        >
+
+      </div>
+
+
+      <div class="card-footer">
+
+        <span>
+          Geography Mock Test
+        </span>
+
+        <a
+          href="class-ix-result.jpeg"
+          download="BHUGAL-PRAYAS-Class-IX-Result.jpeg"
+          class="download-btn"
+        >
+          Download Result
+        </a>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- MOTIVATION -->
+
+<section class="motivation">
+
+  <h2>
+    Keep Studying... Aim for the Best!
+  </h2>
+
+  <p>
+    Every effort brings you closer to success.
+    Keep exploring the world through Geography.
+  </p>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <h3>
+    BHUGAL <span>PRAYAS</span>
+  </h3>
+
+  <p>
+    By Pintu Roy
+  </p>
+
+  <p>
+    © 2026 BHUGAL PRAYAS. All Rights Reserved.
+  </p>
+
+</footer>
+
+
+<!-- IMAGE LIGHTBOX -->
+
+<div
+  class="lightbox"
+  id="lightbox"
+  onclick="closeLightbox()"
+>
+
+  <span class="close-lightbox">
+    &times;
+  </span>
+
+  <img
+    id="lightbox-image"
+    alt="Full Mock Test Result"
+  >
+
+</div>
+
+
+<script>
+
+function openLightbox(image) {
+
+  const lightbox =
+    document.getElementById("lightbox");
+
+  const lightboxImage =
+    document.getElementById("lightbox-image");
+
+  lightboxImage.src = image.src;
+
+  lightbox.style.display = "flex";
+
+  document.body.style.overflow = "hidden";
+
+}
+
+
+function closeLightbox() {
+
+  document.getElementById("lightbox")
+    .style.display = "none";
+
+  document.body.style.overflow = "auto";
+
+}
+
+
+/* ESC KEY TO CLOSE IMAGE */
+
+document.addEventListener("keydown", function(event) {
+
+  if (event.key === "Escape") {
+    closeLightbox();
+  }
+
+});
+
+</script>
+
+
+</body>
 </html>
